@@ -150,13 +150,13 @@ export const config = {
     // after test is run to receive the report with videos type in command --> allure serve _results_/allure-raw
     // another way to generate a test report --> // allure generate --clean --output ./_results_/allure-report
     reporters: [
-        [
-            video,
-        {
-            saveAllVideos: true,
-            outputDir: "./reporting",
-            videoSlowdownMultiplier: 9
-        }],
+        // [
+        //     video,
+        // {
+        //     saveAllVideos: true,
+        //     outputDir: "./reporting",
+        //     videoSlowdownMultiplier: 9
+        // }],
         ['allure', {
             outputDir: './reporting',
             disableWebdriverStepsReporting: true,
@@ -311,16 +311,16 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function(test) {
-        exec('allure serve reporting', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error: ${error.message}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-        });
-    },
+    // onComplete: function(test) {
+    //     exec('allure serve reporting', (error, stdout, stderr) => {
+    //         if (error) {
+    //             console.error(`Error: ${error.message}`);
+    //             return;
+    //         }
+    //         console.log(`stdout: ${stdout}`);
+    //         console.error(`stderr: ${stderr}`);
+    //     });
+    // },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
