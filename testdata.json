@@ -1,5 +1,16 @@
 {
     "input": {
+        "account": "Testing Consultancy",
+        "address": "Korte Jan achernaamstraat 13",
+        "phonenumber1": "+31(0)306012345",
+        "phonenumber2": "+31(0)306056789",
+        "website": "www.testing-consultancy.nl",
+        "description": "Leading consultancy agency of the world.",
+        "employees": "69",
+        "postalCode": "5623 AD",
+        "city": "Meppel",
+        "province": "Drenthe",
+        "country": "the Netherlands"
 
     },
     "output": {
