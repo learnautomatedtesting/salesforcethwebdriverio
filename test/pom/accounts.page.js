@@ -7,7 +7,7 @@ class Account {
 
         newButton : () => $('//a[@title="New"]'),
         accountName : () => $('>>>[name="Name"]'),
-        phone1 : () => $('//*[@data-field-id="RecordPhoneField2"]//input'),
+        phone1 : () => $('>>>[name="Phone"]'),
         nameWebsite : () => $('>>>[name="Website"]'),
         descriptionWebsite : () => $('//*[@data-field-id="RecordDescriptionField"]//textarea'),
         phone2 : () => $('//flexipage-field[@data-field-id="RecordPhoneField"]//input'),

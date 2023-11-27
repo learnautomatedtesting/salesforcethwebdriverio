@@ -1,6 +1,3 @@
-import { config } from 'dotenv';
-config();
-
 class HomePage {
 
     elements ={
@@ -21,11 +18,11 @@ class HomePage {
 
     async select_Login() {
 
-        await this.elements.menuButton().waitForDisplayed({timeout: 5000});
+        await this.elements.menuButton().waitForDisplayed();
         await this.elements.menuButton().click();
-        await this.elements.inloggenButton().waitForDisplayed({timeout: 5000});
+        await this.elements.inloggenButton().waitForDisplayed();
         await this.elements.inloggenButton().click();
-        await this.elements.salesforceButton().waitForDisplayed({timeout: 5000});
+        await this.elements.salesforceButton().waitForDisplayed();
         await this.elements.salesforceButton().click();
     }
 

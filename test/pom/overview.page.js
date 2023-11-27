@@ -2,7 +2,6 @@ class Overview {
 
     elements ={
 
-        //accountsButton : () => $('>>>[class="bBottom"]').$('>>>[title="Accounts"]'),
         profileButton : () => $('[title="User"]'),
         
     }
@@ -10,8 +9,6 @@ class Overview {
 
     async click_AccountsButton() {
 
-        // await this.elements.accountsButton().waitForDisplayed({timeout: 5000});
-        // await this.elements.accountsButton().click();
 
         let test = await $('>>>[title="Accounts"]')         
         await browser.execute("arguments[0].click();",test)
@@ -19,7 +16,7 @@ class Overview {
 
     async click_ProfileButton() {
 
-        await this.elements.profileButton().waitForDisplayed({timeout: 5000});
+        await this.elements.profileButton().waitForDisplayed();
         await this.elements.profileButton().click();
     }
 

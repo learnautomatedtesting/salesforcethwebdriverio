@@ -1,43 +1,49 @@
 {
+  "loggingIn": {
+    "output": {
+      "quarterlyPerformance": "Quarterly Performance"
+  }
+},
+
+  "accounts": {
     "input": {
-
-        "account": "Testing Consultancy",
-        "phonenumber1": "+31(0)306012345",
-        "typeAccount": "",
-        "website": "www.testing-consultancy.nl",
-        "description": "Leading consultancy agency of the world.",
-        "phonenumber2": "+31(0)306056789",
-        "employees": "69",
-        "labelTypeOfAccount": "Type",
-        "typeOfAccount": "Prospect",
-        "labelTypeOfIndustry": "Industry",
-        "typeOfIndustry": "Banking"
-
+      "account": "Testing Consultancy",
+      "phonenumber1": "+31(0)306012345",
+      "typeAccount": "",
+      "website": "www.testing-consultancy.nl",
+      "description": "Leading consultancy agency of the world.",
+      "phonenumber2": "+31(0)306056789",
+      "employees": "69",
+      "labelTypeOfAccount": "Type",
+      "typeOfAccount": "Prospect",
+      "labelTypeOfIndustry": "Industry",
+      "typeOfIndustry": "Banking"
     },
 
     "billingAddress": {
-
-        "billingAddress": "BillingAddress",
-        "address": "Korte Jan achernaamstraat 13",
-        "postalCode": "5623 AD",
-        "city": "Meppel",
-        "province": "Drenthe",
-        "country": "the Netherlands",
-        "phonenumber2": "+31(0)306056789"
+      "billingAddress": "BillingAddress",
+      "address": "Korte Jan achernaamstraat 13",
+      "postalCode": "5623 AD",
+      "city": "Meppel",
+      "province": "Drenthe",
+      "country": "the Netherlands",
+      "phonenumber2": "+31(0)306056789"
     },
 
     "shippingAddress": {
-
-        "shippingAddress": "ShippingAddress",
-        "address": "Korte Jan achernaamstraat 13",
-        "postalCode": "5623 AD",
-        "city": "Meppel",
-        "province": "Drenthe",
-        "country": "the Netherlands",
-        "phonenumber2": "+31(0)306056789"
+      "shippingAddress": "ShippingAddress",
+      "address": "Korte Jan achernaamstraat 13",
+      "postalCode": "5623 AD",
+      "city": "Meppel",
+      "province": "Drenthe",
+      "country": "the Netherlands",
+      "phonenumber2": "+31(0)306056789"
     },
 
     "output": {
-        "connectWithYourCustomers": "Connect with Your Customers"
+      "connectWithYourCustomers": "Connect with Your Customers"
     }
+  },
+
+  "contacts": {}
 }
