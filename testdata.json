@@ -8,16 +8,35 @@
   "accounts": {
     "input": {
       "account": "Testing Consultancy",
-      "phonenumber1": "+31(0)306012345",
-      "typeAccount": "",
+      "accountNumber": "001",
+      "accountSite": "Not applicable",
+      "annualRevenue": "1.000.001",
+      "phonenumber": "+31(0)306012345",
+      "fax": "+31(0)306056789",
       "website": "www.testing-consultancy.nl",
-      "description": "Leading consultancy agency of the world.",
-      "phonenumber2": "+31(0)306056789",
+      "tickerSymbol": "Not applicable",
       "employees": "69",
+      "sicCode": "4857",
       "labelTypeOfAccount": "Type",
       "typeOfAccount": "Prospect",
       "labelTypeOfIndustry": "Industry",
-      "typeOfIndustry": "Banking"
+      "typeOfIndustry": "Banking",
+      "labelOfRating": "Rating",
+      "typeOfRating": "Hot",
+      "labelOfOwnership": "Ownership",
+      "typeOfOwnership": "Private",
+      "labelOfCustomerPriority": "Customer Priority",
+      "typeOfCustomerPriority": "High",
+      "labelOfActive": "Active",
+      "typeOfActive": "Yes",
+      "labelOfSLA": "SLA",
+      "typeOfSLA": "Platinum",
+      "labelOfUpsellOpportunity": "Upsell Opportunity",
+      "typeOfUpsellOpportunity": "Maybe",
+      "numberOfLocations": "1",
+      "slaSerialNumber": "10",
+      "accountsDescription": "The number 1 leading consultancy agency of the world."
+
     },
 
     "billingAddress": {
