@@ -16,7 +16,8 @@ class Account {
     sicCode: () => $('>>>[name="Sic"]'),
     numberOfLocations: () => $('//input[@name="NumberofLocations__c"]'),
     slaSerialNumber: () => $('//input[@name="SLASerialNumber__c"]'),
-    description: () => $('>>>[aria-describedby="textarea-label-302 null"]'),
+    description: () => $('//label[contains(text(), "Description")]/..//div/textarea'),
+    saveButton: () => $('>>>//button[text()= "Save"]'),
   };
 
   async click_NewButton() {
@@ -72,11 +73,11 @@ class Account {
       `//*[contains(@data-target-selection-name, "${typeOfAddress}")]//input[@name="country"]`
     );
 
-    street_.setValue(street);
-    postalCode_.setValue(postalcode);
-    city_.setValue(city);
-    province_.setValue(provincy);
-    country_.setValue(country);
+    await street_.setValue(street);
+    await postalCode_.setValue(postalcode);
+    await city_.setValue(city);
+    await province_.setValue(provincy);
+    await country_.setValue(country);
   }
 
   async fill_In_additionalInformation(
@@ -91,6 +92,10 @@ class Account {
 
   async fill_In_A_Description(accountDescription) {
     await this.elements.description().setValue(accountDescription)
+  }
+
+  async click_SaveButton() {
+    await this.elements.saveButton().click()
   }
 }
 export default new Account();
