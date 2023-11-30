@@ -156,6 +156,9 @@ describe("Login Salesforce", () => {
       jsonData.accounts.input.accountsDescription
     )
 
+    // Click the Save buton
+    await Account.click_SaveButton();
+
 
   });
 });

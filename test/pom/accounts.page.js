@@ -17,7 +17,7 @@ class Account {
     numberOfLocations: () => $('//input[@name="NumberofLocations__c"]'),
     slaSerialNumber: () => $('//input[@name="SLASerialNumber__c"]'),
     description: () => $('//label[contains(text(), "Description")]/..//div/textarea'),
-    saveButton: () => $('>>>//button[text()= "Save"]'),
+    saveButton: () => $('//button[text()= "Save"]'),
   };
 
   async click_NewButton() {
