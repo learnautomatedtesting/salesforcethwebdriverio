@@ -17,7 +17,7 @@ describe("Login Salesforce", () => {
     await browser.url("/");
 
      // Accept all cookies
-     await HomePage.click_AcceptCookies();
+     await HomePage.click_AcceptCookies()
 
      // Navigate to the login page of Salesforce trial
      await HomePage.select_Login();
