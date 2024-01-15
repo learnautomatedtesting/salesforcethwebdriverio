@@ -134,7 +134,7 @@ Deze elementen implementeer ik in functies, die in mijn testscript aangeroepen k
 
 
 Tijdens het testen valideer ik eerst of de juiste URL gebruikt is, door er een _assertion_ op te plegen, door middel van een **expect** 
-    // Assertion on the URL
+    
     await expect(browser).toHaveUrl('https://www.salesforce.com/nl/?ir=1');
 
 Daarna volgt de gehele inlogprocedure.
