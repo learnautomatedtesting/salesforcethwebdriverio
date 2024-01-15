@@ -2,8 +2,7 @@ class HomePage {
 
     elements ={
 
-        acceptCookiesNL : () => $('//button[text()="Alle cookies accepteren"]'),
-        acceptCookiesEN : () => $('//button[@id="onetrust-accept-btn-handler"]'),
+        acceptCookies : () => $('//button[@id="onetrust-accept-btn-handler"]'),
         menuButton : () => $('>>>[class="icon hamburger-img show"]'),
         inloggenButton : () => $('>>>[class="l1-button login"]').$('>>>[class="hgf-button"]'),
         salesforceButton : () => $('>>>[class="hide-on-desktop active-l1"]').$('>>>[href="https://login.salesforce.com/?locale=nl"]'),
@@ -12,14 +11,9 @@ class HomePage {
         loginButton : () => $('[type="submit"]'),
     }
 
-    async click_AcceptCookiesNL() {
+    async click_AcceptCookies() {
         
-        await this.elements.acceptCookiesNL().click();
-    }
-
-    async click_AcceptCookiesEN() {
-        
-        await this.elements.acceptCookiesEN().click();
+        await this.elements.acceptCookies().click();
     }
 
     async select_Login() {

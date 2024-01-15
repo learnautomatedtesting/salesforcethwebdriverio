@@ -11,17 +11,15 @@ let jsonData = "";
 describe("Login Salesforce", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
+
+    // Navigate to the website
+    await browser.url("/");
   });
 
   it("Creating an account", async () => {
-    // Navigate to the website
-    await browser.url("/");
 
-    // Accept all cookies Dutch version
-    // await HomePage.click_AcceptCookiesNL();
-
-    // Accept all cookies English version
-    await HomePage.click_AcceptCookiesEN();
+    // Accept all cookies
+    await HomePage.click_AcceptCookies();
 
     // Navigate to the login page of Salesforce trial
     await HomePage.select_Login();
@@ -58,7 +56,7 @@ describe("Login Salesforce", () => {
 
     // Fill in the new account's details
     // Filling in details inside of a (combobox) dropdown menu
-    // Filling in the associated Type of account
+    // Filling in the associated TYPE of account
     await fill_In_Combo(
       jsonData.accounts.input.labelTypeOfAccount,
       jsonData.accounts.input.typeOfAccount
@@ -66,7 +64,7 @@ describe("Login Salesforce", () => {
 
     // Fill in the new account's details
     // Filling in details inside of a (combobox) dropdown menu
-    // Filling in the associated Industry of account
+    // Filling in the associated INDUSTRY of account
     await fill_In_Combo(
       jsonData.accounts.input.labelTypeOfIndustry,
       jsonData.accounts.input.typeOfIndustry
@@ -74,7 +72,7 @@ describe("Login Salesforce", () => {
 
     // Fill in the new account's details
     // Filling in details inside of a (combobox) dropdown menu
-    // Filling in the Rating of the account
+    // Filling in the RATING of the account
     await fill_In_Combo(
       jsonData.accounts.input.labelOfRating,
       jsonData.accounts.input.typeOfRating
@@ -82,15 +80,15 @@ describe("Login Salesforce", () => {
 
     // Fill in the new account's details
     // Filling in details inside of a (combobox) dropdown menu
-    // Filling in the Ownership of the account
+    // Filling in the OWNERSHIP of the account
     await fill_In_Combo(
       jsonData.accounts.input.labelOfOwnership,
       jsonData.accounts.input.typeOfOwnership
     );
 
     // Fill in the address information
-    // There are two types of addresses: BillingAddress and ShippingAddress
-    // Here the BillingAddress is requiered
+    // There are two types of addresses: BILLING ADDRESS and SHIPPING ADDRESS
+    // Here the BILLING ADDRESS is requiered
     await Account.fill_In_AddressInformation(
       jsonData.accounts.billingAddress.billingAddress,
       jsonData.accounts.billingAddress.address,
@@ -101,8 +99,8 @@ describe("Login Salesforce", () => {
     );
 
     // Fill in the address information
-    // There are two types of addresses: BillingAddress and ShippingAddress
-    // Here the ShippingAddress is requiered
+    // There are two types of addresses: BILLING ADDRESS and SHIPPING ADDRESS
+    // Here the SHIPPING ADDRESS is requiered
     await Account.fill_In_AddressInformation(
       jsonData.accounts.shippingAddress.shippingAddress,
       jsonData.accounts.shippingAddress.address,
@@ -114,7 +112,7 @@ describe("Login Salesforce", () => {
 
     // Fill in the new account's additional information
     // Filling in details inside of a (combobox) dropdown menu
-    // Filling in the Customer Priority of the account
+    // Filling in the CUSTOMER PRIORITY of the account
     await fill_In_Combo(
       jsonData.accounts.input.labelOfCustomerPriority,
       jsonData.accounts.input.typeOfCustomerPriority
@@ -122,7 +120,7 @@ describe("Login Salesforce", () => {
 
     // Fill in the new account's additional information
     // Filling in details inside of a (combobox) dropdown menu
-    // Filling in if the account is active or not
+    // Filling in if the account is ACTIVE or not
     await fill_In_Combo(
       jsonData.accounts.input.labelOfActive,
       jsonData.accounts.input.typeOfActive
@@ -130,7 +128,7 @@ describe("Login Salesforce", () => {
 
     // Fill in the new account's additional information
     // Filling in details inside of a (combobox) dropdown menu
-    // Filling in the service-level-agreement of the account
+    // Filling in the SERVICE-LEVEL-AGREEMENT of the account
     await fill_In_Combo(
       jsonData.accounts.input.labelOfSLA,
       jsonData.accounts.input.typeOfSLA
