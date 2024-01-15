@@ -16,11 +16,6 @@ class HomePage {
         await this.elements.acceptCookies().click();
     }
 
-    async click_AcceptCookiesEN() {
-        
-        await this.elements.acceptCookies().click();
-    }
-
     async select_Login() {
 
         await this.elements.menuButton().waitForDisplayed();

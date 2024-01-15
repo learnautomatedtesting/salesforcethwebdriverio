@@ -10,12 +10,13 @@ let jsonData = "";
 describe("Login Salesforce", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
+
+    // Navigate to the website
+    await browser.url("/");
   });
   
   it("Logging in", async () => {
-    // Navigate to the website
-    await browser.url("/");
-
+    
      // Accept all cookies
      await HomePage.click_AcceptCookies()
 
