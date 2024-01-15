@@ -1,5 +1,10 @@
-# SalesForce
-
-Within this repository, all tests and testdata will be stored for **Salesforce** purposes.
-
-Later on, we'll write blog post regarding our approach and findings and post these on Ralph's learningportal.
+proces is de beschrijving van de test en hoe je tot die test gekomen bent, waarbij  dit voorkomt in je test .
+Click button & assert URL text
+Find Element & Get Text
+Finding Multiple Elements ($$)
+Know your WebdriverIO Commands
+Settext, button clicks, gettext, dropdown, checkbox, scrollen
+Pause command
+Common Wait commands
+waitUntil command
+Mocha 
