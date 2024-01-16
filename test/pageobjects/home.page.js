@@ -6,9 +6,6 @@ class HomePage {
         menuButton : () => $('>>>[class="icon hamburger-img show"]'),
         inloggenButton : () => $('>>>[class="l1-button login"]').$('>>>[class="hgf-button"]'),
         salesforceButton : () => $('>>>[class="hide-on-desktop active-l1"]').$('>>>[href="https://login.salesforce.com/?locale=nl"]'),
-        userName : () => $('[id="username"]'),
-        password : () => $('[id="password"]'),
-        loginButton : () => $('[type="submit"]'),
     }
 
     async click_AcceptCookies() {
