@@ -25,6 +25,10 @@ Maak een project aan op je **Operation System** en installeer node.js en VSC vol
 
 
 
+
+
+
+
 Tijdens het runnen van het testscript, maak ik gebruik van de volgende attributen:
 .waitForDisplayed()
 .click()
