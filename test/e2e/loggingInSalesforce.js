@@ -1,6 +1,6 @@
-import HomePage from "../pom/home.page.js";
-import LogIn from "../pom/login.page.js";
-import Setup from "../pom/setup.page.js"
+import HomePage from "../pageobjects/home.page.js";
+import LogIn from "../pageobjects/login.page.js";
+import Setup from "../pageobjects/setup.page.js"
 import fs from "fs-extra";
 
 let jsonData = "";
@@ -10,6 +10,8 @@ let jsonData = "";
 describe("Login Salesforce", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
+
+    //await browser.maximizeWindow();
 
     // Navigate to the website
     await browser.url("/");
