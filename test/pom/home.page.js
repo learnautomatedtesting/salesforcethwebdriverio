@@ -3,12 +3,7 @@ class HomePage {
     elements ={
 
         acceptCookies : () => $('//button[@id="onetrust-accept-btn-handler"]'),
-        menuButton : () => $('>>>[class="icon hamburger-img show"]'),
-        inloggenButton : () => $('>>>[class="l1-button login"]').$('>>>[class="hgf-button"]'),
-        salesforceButton : () => $('>>>[class="hide-on-desktop active-l1"]').$('>>>[href="https://login.salesforce.com/?locale=nl"]'),
-        userName : () => $('[id="username"]'),
-        password : () => $('[id="password"]'),
-        loginButton : () => $('[type="submit"]'),
+        salesforceButton : () => $('>>>[class="utility-icons-items login"]').$('>>>[href="https://login.salesforce.com/?locale=nl"]'),
     }
 
     async click_AcceptCookies() {
@@ -18,11 +13,9 @@ class HomePage {
 
     async select_Login() {
 
-        await this.elements.menuButton().waitForDisplayed();
-        await this.elements.menuButton().click();
-        await this.elements.inloggenButton().waitForDisplayed();
-        await this.elements.inloggenButton().click();
-        await this.elements.salesforceButton().waitForDisplayed();
+        await $('>>>[class="utility-icons-items login"]').$('>>>[class="utility-button"]').moveTo();
+
+        await this.elements.salesforceButton().waitForClickable();
         await this.elements.salesforceButton().click();
     }
 

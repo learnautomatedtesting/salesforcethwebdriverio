@@ -16,7 +16,7 @@ class LogIn {
         const username = process.env.USERNAMESF;
         const password = process.env.PASSWORD;
 
-        await this.elements.userName().waitForDisplayed({timeout: 5000});
+        await this.elements.userName().waitForDisplayed();
         await this.elements.userName().setValue(username);
         await this.elements.password().setValue(password);
         await this.elements.loginButton().click();

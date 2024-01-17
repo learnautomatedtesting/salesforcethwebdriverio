@@ -9,13 +9,20 @@ let jsonData = "";
 
 describe("Login Salesforce", () => {
   before(async () => {
+    // Load in the testdat.json file
     jsonData = await fs.readJson("./testdata.json");
+
+    // Maximize the browser window
+    await browser.maximizeWindow();
 
     // Navigate to the website
     await browser.url("/");
   });
   
   it("Logging in", async () => {
+
+    // Assertion on the URL
+    await expect(browser).toHaveUrl('https://www.salesforce.com/nl/?ir=1');
     
      // Accept all cookies
      await HomePage.click_AcceptCookies()
