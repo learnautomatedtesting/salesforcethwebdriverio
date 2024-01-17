@@ -20,9 +20,18 @@ Maak een project aan op je **Operation System** en installeer node.js en VSC vol
 **OPZETTEN TEST FRAMEWORK**
 - In VSC, installeer WDIO via de terminal
 - Volg de instructies en kies **Mocha** als framework
-- Kies **(Y)** wanneer er gevraagd wordt of WDIO testfiles moet aanmaken _(Test folder - subfolders: e2e en pageobjects)_
+- Kies **(Y)** wanneer er gevraagd wordt of WDIO testfiles moet aanmaken _(Test folder - subfolders: pageobjects en specs)_
 
+**Pageobjects**
 
+- In deze folder krijgen de webpagina's een aparte file waar alle elementen in worden opgeslagen en functies in worden beschreven
+- Deze functies worden in het testscript aangeroepen
+- Er wordt geprobeerd om de elementen in deze functies zo variabel mogelijk te houden
+- Dit zorgt ervoor dat het testscript overzichtelijk blijft en verschillende elementen gebruikt kunnen zonder het testscript te hoeven aanpassen
+
+**Specs**
+- In de specfiles staan de testscripts gedefinieerd
+  
 
 
 
