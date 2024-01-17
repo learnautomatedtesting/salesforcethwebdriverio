@@ -1,6 +1,6 @@
-import HomePage from "../pom/home.page.js";
-import LogIn from "../pom/login.page.js";
-import Setup from "../pom/setup.page.js"
+import HomePage from "../pageobjects/home.page.js";
+import LogIn from "../pageobjects/login.page.js";
+import Setup from "../pageobjects/setup.page.js"
 import fs from "fs-extra";
 
 let jsonData = "";
@@ -12,8 +12,12 @@ describe("Login Salesforce", () => {
     // Load in the testdat.json file
     jsonData = await fs.readJson("./testdata.json");
 
+<<<<<<< HEAD:test/spec/loggingInSalesforce.js
     // Maximize the browser window
     await browser.maximizeWindow();
+=======
+    //await browser.maximizeWindow();
+>>>>>>> 84e413e5afbe6604a4a070f2293d85d919fd6ed7:test/specs/loggingInSalesforce.js
 
     // Navigate to the website
     await browser.url("/");

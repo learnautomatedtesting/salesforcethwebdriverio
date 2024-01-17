@@ -1,8 +1,8 @@
-import HomePage from "../pom/home.page.js";
-import LogIn from "../pom/login.page.js";
-import Setup from "../pom/setup.page.js";
-import Overview from "../pom/overview.page.js";
-import Account from "../pom/accounts.page.js";
+import HomePage from "../pageobjects/home.page.js";
+import LogIn from "../pageobjects/login.page.js";
+import Setup from "../pageobjects/setup.page.js";
+import Overview from "../pageobjects/overview.page.js";
+import Account from "../pageobjects/accounts.page.js";
 import { fill_In_Combo } from "../functions/functions.js";
 import fs from "fs-extra";
 
