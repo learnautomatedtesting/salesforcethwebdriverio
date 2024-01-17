@@ -12,12 +12,8 @@ describe("Login Salesforce", () => {
     // Load in the testdat.json file
     jsonData = await fs.readJson("./testdata.json");
 
-<<<<<<< HEAD:test/spec/loggingInSalesforce.js
     // Maximize the browser window
     await browser.maximizeWindow();
-=======
-    //await browser.maximizeWindow();
->>>>>>> 84e413e5afbe6604a4a070f2293d85d919fd6ed7:test/specs/loggingInSalesforce.js
 
     // Navigate to the website
     await browser.url("/");
