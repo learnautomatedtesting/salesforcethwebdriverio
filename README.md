@@ -62,7 +62,7 @@ Deze zijn terug te vinden op de WDIO's [website](https://webdriver.io/docs/api/e
 
 **Libaries**
 
-Om de scripts goed te kunnen uitvoeren, zijn ook de volgende packages(_libaries_) nodig:
+Om de scripts goed te kunnen uitvoeren, zijn ook de volgende packages (_libaries_) nodig:
 - fs van _fs-extra_
 - config van _dotenv_
 
