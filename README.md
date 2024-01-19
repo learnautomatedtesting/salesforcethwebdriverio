@@ -35,7 +35,8 @@ Maak een project aan op je **Operation System** en installeer node.js en VSC vol
 
 **DRAAIEN VAN SCRIPTS**
 
-Op de landingspagina (homepage) van Salesforce wordt gebruik gemaakt van een **shadow-root**
+Op de landingspagina (homepage) van Salesforce wordt gebruik gemaakt van een **shadowDOM**.
+In de root folders hiervan (**shadow-root**) zitten de elementen voor het _Inloggen_ genest.
 
 ![image](https://github.com/Jeffrey-Jongkees/Salesforce/assets/135017230/796c4018-09ed-4115-8457-c59390690132)
 
@@ -44,22 +45,28 @@ Op de landingspagina (homepage) van Salesforce wordt gebruik gemaakt van een **s
 
       inloggenButton : () => $('>>>[class="l1-button login"]').$('>>>[class="hgf-button"]')
 
-  
 
+- Uit veiligheidsoverwegingen is ervoor gekozen om **environment variablen** te gebruiken bij het invoeren van de credentials
+- De .env file staat in de .gitignore file en worden ook niet geupload naar GitHub
+![env blur](https://github.com/Jeffrey-Jongkees/Salesforce/assets/135017230/c09206ef-29a3-4315-93c3-86176dcda067)
 
+**Commands**
 
+Tijdens het runnen van het testscript, is er gebruik gemaakt van de volgende commands:
+- .waitForDisplayed()
+- .click()
+- .setValue()
+- .toHaveText()
 
+Deze zijn terug te vinden op de WDIO's [website](https://webdriver.io/docs/api/element)
 
+**Libaries**
 
-Tijdens het runnen van het testscript, maak ik gebruik van de volgende attributen:
-.waitForDisplayed()
-.click()
-.setValue()
-.toHaveText()
-
-Om het script goed te kunnen uitvoeren, zijn ook de volgende bibliotheken(_libaries_) nodig:
+Om de scripts goed te kunnen uitvoeren, zijn ook de volgende packages (_libaries_) nodig:
 - fs van _fs-extra_
 - config van _dotenv_
+
+Deze zijn terug te vinden op [npmjs.com](https://www.npmjs.com/) en worden geinstallleerd via npm.
 
 
 
