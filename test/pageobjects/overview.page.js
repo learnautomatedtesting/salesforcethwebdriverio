@@ -2,7 +2,8 @@ class Overview {
 
     elements ={
 
-        profileButton : () => $('[title="User"]'),
+        viewProfileButton : () => $('[class*="userProfile-button"]'),
+        logoutButton : () => $('[href="/secur/logout.jsp"]'),
         
     }
 
@@ -14,10 +15,16 @@ class Overview {
         await browser.execute("arguments[0].click();",test)
     }
 
-    async click_ProfileButton() {
+    async click_ViewProfileButton() {
 
         await this.elements.profileButton().waitForDisplayed();
         await this.elements.profileButton().click();
+    }
+
+    async click_LogoutButton() {
+
+        await this.elements.logoutButton().waitForDisplayed();
+        await this.elements.logoutButton().click();
     }
 
 

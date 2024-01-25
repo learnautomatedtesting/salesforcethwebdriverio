@@ -1,7 +1,8 @@
 {
   "loggingIn": {
     "output": {
-      "quarterlyPerformance": "Quarterly Performance"
+      "quarterlyPerformance": "Quarterly Performance",
+      "inloggen": "Inloggen"
   }
 },
 
