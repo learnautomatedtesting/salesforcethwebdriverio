@@ -12,8 +12,12 @@ describe("Testing the accounts functionality", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
 
+    // Maximize the browser window
+    await browser.maximizeWindow();
     // Navigate to the website
     await browser.url("/");
+    // Assertion on the URL
+    await expect(browser).toHaveUrlContaining('https://www.salesforce.com/nl/');
   });
 
   it("Creating an account", async () => {
@@ -25,7 +29,10 @@ describe("Testing the accounts functionality", () => {
     await HomePage.select_Login();
 
     // Actual login of Salseforce trial
-    await LogIn.login_Salesforce();
+    await LogIn.login_Salesforce(
+      process.env.USERNAMESF,
+      process.env.PASSWORD
+    );
 
     // Click on the App Launcher
     await Setup.click_AppLauncher();
@@ -156,17 +163,18 @@ describe("Testing the accounts functionality", () => {
 
     // Click the Save buton
     await Account.click_SaveButton();
-
-    await browser.pause(4000)
-
-
   });
 
 
-  it("Creating an account", async () => {
+  it("Deleting an account", async () => {
 
-    
+    // Clicking on the Accounts button
+    await Overview.click_AccountsButton();
 
+    // Click on the Actions button
+    await Account.click_ActionsButton();
 
+    // Delete te account
+    await Account.click_DeleteAccountButton();
   });
 });

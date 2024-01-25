@@ -18,6 +18,9 @@ class Account {
     slaSerialNumber: () => $('//input[@name="SLASerialNumber__c"]'),
     description: () => $('//label[contains(text(), "Description")]/..//div/textarea'),
     saveButton: () => $('//button[text()= "Save"]'),
+    actionsButton: () => $('[data-aura-class="forceVirtualAction"]'),
+    deleteAccountButton: ()=> $('[data-target-selection-name*="StandardButton.Account.Delete"]'),
+    confirmDeleteAccountButton: () => $('[class="modal-footer slds-modal__footer"] [title="Delete"]')
   };
 
   async click_NewButton() {
@@ -96,6 +99,25 @@ class Account {
 
   async click_SaveButton() {
     await this.elements.saveButton().click()
+  }
+
+  async click_ActionsButton() {
+    await this.elements.actionsButton().waitForClickable();
+    await this.elements.actionsButton().click();
+  }
+
+  async click_DeleteAccountButton() {
+    try {
+    await this.elements.deleteAccountButton().waitForClickable();
+    await this.elements.deleteAccountButton().click();
+
+    await this.elements.confirmDeleteAccountButton().waitForClickable();
+    await this.elements.confirmDeleteAccountButton().click();
+
+    console.log("Account deletion successful");
+  } catch (error) {
+      console.error("Error during account deletion: ", error);
+    }
   }
 }
 export default new Account();
