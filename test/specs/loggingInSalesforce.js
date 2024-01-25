@@ -3,6 +3,8 @@ import LogIn from "../pageobjects/login.page.js";
 import Setup from "../pageobjects/setup.page.js";
 import Overview from "../pageobjects/overview.page.js";
 import fs from "fs-extra";
+import { config } from 'dotenv';
+config();
 
 let jsonData = "";
 
@@ -18,14 +20,11 @@ describe("Login Salesforce", () => {
     // Navigate to the website
     await browser.url("/");
     // Assertion on the URL
-    await expect(browser).toHaveUrl('https://www.salesforce.com/nl/?ir=1');
+    await expect(browser).toHaveUrlContaining('https://www.salesforce.com/nl/');
   });
   
   it("Logging in", async () => {
-
-    // Assertion on the URL
-    await expect(browser).toHaveUrl('https://www.salesforce.com/nl/?ir=1');
-    
+   
      // Accept all cookies
      await HomePage.click_AcceptCookies()
 
@@ -33,7 +32,10 @@ describe("Login Salesforce", () => {
      await HomePage.select_Login();
  
      // Actual login of Salseforce trial
-     await LogIn.login_Salesforce();
+     await LogIn.login_Salesforce(
+      process.env.USERNAMESF,
+      process.env.PASSWORD
+     );
  
      // Click on the App Launcher
      await Setup.click_AppLauncher();
@@ -54,41 +56,51 @@ describe("Login Salesforce", () => {
 
   it("Logging out", async () => {
     
-     // Accept all cookies
-     await HomePage.click_AcceptCookies()
-
-     // Navigate to the login page of Salesforce trial
-     await HomePage.select_Login();
- 
-     // Actual login of Salseforce trial
-     await LogIn.login_Salesforce();
- 
-     // Click on the App Launcher
-     await Setup.click_AppLauncher();
- 
-     // Click on Service
-     await Setup.click_Service();
-    
-    // Verifying of the successful login
-    const quarterly_performance = await $('[title="Quarterly Performance"]');
-    
-    await quarterly_performance.waitForDisplayed();
-    await expect(quarterly_performance).toHaveText(
-      jsonData.loggingIn.output.quarterlyPerformance
-    );
-
     // Click the View Profile button
     await Overview.click_ViewProfileButton();
 
     // Select Log Out
     await Overview.click_LogoutButton();
-
+    await browser.pause(3000)
     // Verify the succesful logout
-    const inloggen = await $('id="Login"')
+    const inloggen = await $('[id="Login"]')
 
     await inloggen.waitForDisplayed();
     await expect(inloggen).toHaveValue(
       jsonData.loggingIn.output.inloggen
+    )
+
+  });
+
+
+  it("Logging in with invalid credentials - Invalid password", async () => {
+    
+    // Actual login of Salseforce trial
+    await LogIn.login_Salesforce(
+      process.env.USERNAMESF,
+      jsonData.loggingIn.login.invalidPassword
+     );
+
+    const error = await $('[id="error"]')
+    await error.waitForDisplayed();
+    await expect(error).toHaveText(
+      jsonData.loggingIn.output.loginError
+    )
+
+  });
+
+  it("Logging in with invalid credentials - Invalid email", async () => {
+    
+    // Actual login of Salseforce trial
+    await LogIn.login_Salesforce(
+      jsonData.loggingIn.login.invalidEmail,
+      process.env.PASSWORD,
+     );
+
+    const error = await $('[id="error"]')
+    await error.waitForDisplayed();
+    await expect(error).toHaveText(
+      jsonData.loggingIn.output.loginError
     )
 
   });

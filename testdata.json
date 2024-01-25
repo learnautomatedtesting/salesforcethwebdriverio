@@ -1,8 +1,13 @@
 {
   "loggingIn": {
+    "login": {
+      "invalidPassword": "InvalidPassword",
+      "invalidEmail": "invalidEmail"
+    },
     "output": {
       "quarterlyPerformance": "Quarterly Performance",
-      "inloggen": "Inloggen"
+      "inloggen": "Inloggen",
+      "loginError": "Controleer uw gebruikersnaam en wachtwoord. Als u nog steeds niet kunt inloggen, neemt u contact op met uw Salesforce-beheerder."
   }
 },
 
@@ -58,10 +63,6 @@
       "province": "Drenthe",
       "country": "the Netherlands",
       "phonenumber2": "+31(0)306056789"
-    },
-
-    "output": {
-      "connectWithYourCustomers": "Connect with Your Customers"
     }
   },
 

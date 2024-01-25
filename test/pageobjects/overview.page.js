@@ -17,8 +17,8 @@ class Overview {
 
     async click_ViewProfileButton() {
 
-        await this.elements.profileButton().waitForDisplayed();
-        await this.elements.profileButton().click();
+        await this.elements.viewProfileButton().waitForDisplayed();
+        await this.elements.viewProfileButton().click();
     }
 
     async click_LogoutButton() {

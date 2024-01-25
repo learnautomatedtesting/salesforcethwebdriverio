@@ -11,10 +11,7 @@ class LogIn {
     }
 
 
-    async login_Salesforce() {
-
-        const username = process.env.USERNAMESF;
-        const password = process.env.PASSWORD;
+    async login_Salesforce(username, password) {
 
         await this.elements.userName().waitForDisplayed();
         await this.elements.userName().setValue(username);
