@@ -8,7 +8,7 @@ import fs from "fs-extra";
 
 let jsonData = "";
 
-describe("Login Salesforce", () => {
+describe("Testing the accounts functionality", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
 
@@ -156,6 +156,16 @@ describe("Login Salesforce", () => {
 
     // Click the Save buton
     await Account.click_SaveButton();
+
+    await browser.pause(4000)
+
+
+  });
+
+
+  it("Creating an account", async () => {
+
+    
 
 
   });
