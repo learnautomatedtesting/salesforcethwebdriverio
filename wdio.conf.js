@@ -151,7 +151,7 @@ export const config = {
     // another way to generate a test report --> // allure generate --clean --output ./_results_/allure-report
     reporters: ['spec',
         // [
-        //     'video',
+        //     video,
         // {
         //     saveAllVideos: true,
         //     outputDir: "./reporting",
