@@ -149,9 +149,9 @@ export const config = {
 
     // after test is run to receive the report with videos type in command --> allure serve _results_/allure-raw
     // another way to generate a test report --> // allure generate --clean --output ./_results_/allure-report
-    reporters: [
+    reporters: ['spec',
         // [
-        //     video,
+        //     'video',
         // {
         //     saveAllVideos: true,
         //     outputDir: "./reporting",
