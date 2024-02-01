@@ -1,3 +1,4 @@
 node_modules
 .env
 reporting
+allure-results

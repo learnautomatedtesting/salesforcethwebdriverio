@@ -1,24 +1,6 @@
-// import video from 'wdio-video-reporter';
-// import { exec } from 'child_process';
-import fs from 'fs-extra';
-
-// Function to clean the specified directory
-function cleanDirectory(directoryPath) {
-    try {
-        fs.emptyDirSync(directoryPath);
-        console.log(`Cleaned directory: ${directoryPath}`);
-    } catch (err) {
-        console.error(`Error cleaning directory: ${directoryPath}`);
-        console.error(err);
-    }
-}
-
-// Specify the directories you want to clean before running tests
-const directoriesToClean = ['./reporting'];
-
-// Clean the directories before running tests
-directoriesToClean.forEach(cleanDirectory);
-
+import fs from 'fs-extra'
+import { exec } from 'child_process';
+// import allure from 'allure-commandline'
 export const config = {
     //
     // ====================
@@ -38,16 +20,13 @@ export const config = {
     // worker process. In order to have a group of spec files run in the same worker
     // process simply enclose them in an array within the specs array.
     //
-    // If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
-    // then the current working directory is where your `package.json` resides, so `wdio`
-    // will be called from there.
+    // The path of the spec files will be resolved relative from the directory of
+    // of the config file unless it's absolute.
     //
     specs: ['./test/**/*.js'],
-
+    
     // Patterns to exclude.
-    exclude: [
-        // 'path/to/excluded/files'
-    ],
+    // exclude: ['./test/**/dragAndDrop.js'],
     //
     // ============
     // Capabilities
@@ -70,12 +49,14 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //!!!!! ['--window-size=1920,1080', '--headless, --disable-gpu'] !!!!!
-    capabilities: [{
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-           //args: [' --window-size=1920,1080',' --headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
-        }
-    }],
+    capabilities: [
+        {
+          browserName: "chrome",
+          "goog:chromeOptions": {
+            //args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+          },
+        },
+      ],
 
     //
     // ===================
@@ -108,7 +89,7 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://www.salesforce.com/nl/',
+    baseUrl: 'https://www.salesforce.com/nl/?ir=1',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -124,7 +105,7 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [],
+    // services: [],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -133,6 +114,7 @@ export const config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'mocha',
+    
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -145,31 +127,29 @@ export const config = {
     //
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
-    // see also: https://webdriver.io/docs/dot-reporter
-
-    // after test is run to receive the report with videos type in command --> allure serve _results_/allure-raw
-    // another way to generate a test report --> // allure generate --clean --output ./_results_/allure-report
+    // see also: https://webdriver.io/docs/dot-reporter  
+    
+    //$ npx allure generate --clean allure-results
+    //npx allure open
     reporters: ['spec',
-        // [
-        //     video,
-        // {
-        //     saveAllVideos: true,
-        //     outputDir: "./reporting",
-        //     videoSlowdownMultiplier: 9
-        // }],
-        ['allure', {
-            outputDir: './reporting',
-            disableWebdriverStepsReporting: true,
-            disableWebdriverScreenshotsReporting: true,
-        }],
-    ],
-    //
+    ['allure', {
+        //allure generate allure-results && allure open  -> generates and opens the allure report
+        //allure generate --clean allure-results && allure open  -> empties the report folder prior generating a new one
+        //npx allure open -> opens the report when automatically generating the report is enabled in the onComplete() hook
+        outputDir: './allure-results', 
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+        disableMochaHooks: true
+    }],
+],
+
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
     },
+
     //
     // =====
     // Hooks
@@ -183,10 +163,13 @@ export const config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        if(fs.existsSync("./allure-results")) {
+            fs.rmSync("./allure-results", {recursive: true} );
+        }
+      },
     /**
-     * Gets executed before a worker process is spawned and can be used to initialise specific service
+     * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
      * @param  {string} cid      capability id (e.g 0-0)
      * @param  {object} caps     object containing capabilities for session that will be spawn in the worker
@@ -246,13 +229,13 @@ export const config = {
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
      */
-    // beforeHook: function (test, context) {
+    // beforeHook: function (test, context, hookName) {
     // },
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
      */
-    // afterHook: function (test, context, { error, result, duration, passed, retries }) {
+    // afterHook: function (test, context, { error, result, duration, passed, retries }, hookName) {
     // },
     /**
      * Function to be executed after a test (in Mocha/Jasmine only)
@@ -264,11 +247,12 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-    //     if (!passed) {
-    //         await browser.takeScreenshot();
-    //     }
-    // },
+    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+        if (error) { // If the test didn't pass, take a screenshot.
+           await browser.takeScreenshot();
+        }
+    },
+    
 
 
     /**
@@ -293,8 +277,16 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    
-    after: [],
+    after: function(test) {
+      exec('allure serve allure-results', (error, stdout, stderr) => {
+          if (error) {
+              console.error(`Error: ${error.message}`);
+              return;
+          }
+          console.log(`stdout: ${stdout}`);
+          console.error(`stderr: ${stderr}`);
+      });
+  },
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {object} config wdio configuration object
@@ -311,21 +303,41 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(test) {
-    //     exec('allure serve reporting', (error, stdout, stderr) => {
-    //         if (error) {
-    //             console.error(`Error: ${error.message}`);
-    //             return;
+    // onComplete: function () {
+    //     const reportError = new Error("Could not generate Allure report");
+    //     const generation = allure(["generate", "allure-results", "--clean"]);
+    //     return new Promise((resolve, reject) => {
+    //       const generationTimeout = setTimeout(() => reject(reportError), 60000);
+    
+    //       generation.on("exit", function (exitCode) {
+    //         clearTimeout(generationTimeout);
+    
+    //         if (exitCode !== 0) {
+    //           return reject(reportError);
     //         }
-    //         console.log(`stdout: ${stdout}`);
-    //         console.error(`stderr: ${stderr}`);
+    
+    //         console.log("Allure report successfully generated");
+    //         resolve();
+    //       });
     //     });
-    // },
+    //   },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
     * @param {string} newSessionId session ID of the new session
     */
     // onReload: function(oldSessionId, newSessionId) {
+    // }
+    /**
+    * Hook that gets executed before a WebdriverIO assertion happens.
+    * @param {object} params information about the assertion to be executed
+    */
+    // beforeAssertion: function(params) {
+    // }
+    /**
+    * Hook that gets executed after a WebdriverIO assertion happened.
+    * @param {object} params information about the assertion that was executed, including its results
+    */
+    // afterAssertion: function(params) {
     // }
 }
