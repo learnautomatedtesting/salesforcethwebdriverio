@@ -1,5 +1,5 @@
-// import video from 'wdio-video-reporter';
-// import { exec } from 'child_process';
+import video from 'wdio-video-reporter';
+import { exec } from 'child_process';
 import fs from 'fs-extra';
 
 // Function to clean the specified directory
@@ -150,13 +150,13 @@ export const config = {
     // after test is run to receive the report with videos type in command --> allure serve _results_/allure-raw
     // another way to generate a test report --> // allure generate --clean --output ./_results_/allure-report
     reporters: ['spec',
-        // [
-        //     video,
-        // {
-        //     saveAllVideos: true,
-        //     outputDir: "./reporting",
-        //     videoSlowdownMultiplier: 9
-        // }],
+        [
+            video,
+        {
+            saveAllVideos: true,
+            outputDir: "./reporting",
+            videoSlowdownMultiplier: 9
+        }],
         ['allure', {
             outputDir: './reporting',
             disableWebdriverStepsReporting: true,
@@ -294,7 +294,16 @@ export const config = {
      * @param {Array.<String>} specs List of spec file paths that ran
      */
     
-    after: [],
+    after: function(test) {
+        exec('allure serve ./reporting', (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error: ${error.message}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+            console.error(`stderr: ${stderr}`);
+        });
+    },
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {object} config wdio configuration object
@@ -312,14 +321,6 @@ export const config = {
      * @param {<Object>} results object containing test results
      */
     // onComplete: function(test) {
-    //     exec('allure serve reporting', (error, stdout, stderr) => {
-    //         if (error) {
-    //             console.error(`Error: ${error.message}`);
-    //             return;
-    //         }
-    //         console.log(`stdout: ${stdout}`);
-    //         console.error(`stderr: ${stderr}`);
-    //     });
     // },
     /**
     * Gets executed when a refresh happens.
