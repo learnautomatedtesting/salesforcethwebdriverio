@@ -23,9 +23,26 @@ class Account {
     confirmDeleteAccountButton: () => $('[class="modal-footer slds-modal__footer"] [title="Delete"]')
   };
 
-  async click_NewButton() {
+  async click_NewButton(nameAccount) {
+    try {
+      let account = await $(`a[title="${nameAccount}"]`);
+      let accountText = await account.getText();
+  
+      if(accountText === nameAccount) {
+        // Deleting the existing account and create a new one
+        await this.click_ActionsButton();
+        await this.click_DeleteAccountButton();
+      } else {
+        console.log('No such account exists already.');
+      }
+    } catch (error) {
+      // Handle the error if the element is not found or another error occurs
+      console.error(`An error occurred: ${error.message}`);
+    }
+  
     await this.elements.newButton().click();
   }
+  
 
   async fill_In_Accounts_Information(
     account,

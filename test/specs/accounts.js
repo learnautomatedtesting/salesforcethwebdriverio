@@ -28,8 +28,8 @@ describe("Testing the accounts functionality", () => {
 
     // Actual login of Salseforce trial
     await LogIn.login_Salesforce(
-      process.env.USERNAMESF,
-      process.env.PASSWORD
+      process.env.SALESFORCE_USERNAME,
+      process.env.SALESFORCE_PASSWORD
     );
 
     // Click on the App Launcher
@@ -42,7 +42,9 @@ describe("Testing the accounts functionality", () => {
     await Overview.click_AccountsButton();
 
     // Click the New button to create a new account
-    await Account.click_NewButton();
+    await Account.click_NewButton(
+      jsonData.accounts.input.account
+    );
 
     // Fill in the new account's details
     // Filling in details not inside of a (combobox) dropdown menu
@@ -165,21 +167,20 @@ describe("Testing the accounts functionality", () => {
   });
 
 
-  it("Deleting an account", async () => {
+  it.skip("Deleting an account", async () => {
 
     // Click on the Home button
     await Overview.click_HomeButton();
-
-    await browser.pause(5000);
     
     // Click on the Actions button
     await Overview.click_AccountsButton();
 
-    await browser.pause(20000);
+    await browser.pause(5000);
 
+    // Click Actions button
     await Account.click_ActionsButton();
 
-    // Delete te account
+    // Delete the account
     await Account.click_DeleteAccountButton();
   });
 });
