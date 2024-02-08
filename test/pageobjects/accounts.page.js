@@ -18,7 +18,7 @@ class Account {
     slaSerialNumber: () => $('//input[@name="SLASerialNumber__c"]'),
     description: () => $('//label[contains(text(), "Description")]/..//div/textarea'),
     saveButton: () => $('//button[text()= "Save"]'),
-    actionsButton: () => $('[data-aura-class="forceVirtualAction"]'),
+    actionsButton: () => $('[class="forceVirtualActionMarker forceVirtualAction"]'),
     deleteAccountButton: ()=> $('[data-target-selection-name*="StandardButton.Account.Delete"]'),
     confirmDeleteAccountButton: () => $('[class="modal-footer slds-modal__footer"] [title="Delete"]')
   };

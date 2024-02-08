@@ -2,12 +2,17 @@ class Overview {
 
     elements ={
 
-        viewProfileButton : () => $('[class*="userProfile-button"]'),
-        logoutButton : () => $('[href="/secur/logout.jsp"]'),
+        viewProfileButton: () => $('[class*="userProfile-button"]'),
+        logoutButton: () => $('[href="/secur/logout.jsp"]'),
         
     }
 
 
+    async click_HomeButton() {
+        let test = await $('>>>[href="/lightning/page/home"]')         
+        await browser.execute("arguments[0].click();",test)
+    }
+    
     async click_AccountsButton() {
 
 

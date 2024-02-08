@@ -11,16 +11,21 @@ let jsonData = "";
 describe("Testing the accounts functionality", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
+  });
 
-    // Maximize the browser window
-    await browser.maximizeWindow();
+  beforeEach(async () => {
+    // // Navigate to the website
+    // await browser.url("/");
+    // // Assertion on the URL
+    // await expect(browser).toHaveUrlContaining('https://www.salesforce.com/nl/');
+  });
+
+  it("Creating an account", async () => {
+
     // Navigate to the website
     await browser.url("/");
     // Assertion on the URL
     await expect(browser).toHaveUrlContaining('https://www.salesforce.com/nl/');
-  });
-
-  it("Creating an account", async () => {
 
     // Accept all cookies
     await HomePage.click_AcceptCookies();
@@ -163,15 +168,22 @@ describe("Testing the accounts functionality", () => {
 
     // Click the Save buton
     await Account.click_SaveButton();
+
   });
 
 
   it("Deleting an account", async () => {
 
-    // Clicking on the Accounts button
+    // Click on the Home button
+    await Overview.click_HomeButton();
+
+    await browser.pause(5000);
+    
+    // Click on the Actions button
     await Overview.click_AccountsButton();
 
-    // Click on the Actions button
+    await browser.pause(20000);
+
     await Account.click_ActionsButton();
 
     // Delete te account
