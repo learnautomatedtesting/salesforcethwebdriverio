@@ -13,13 +13,6 @@ describe("Testing the accounts functionality", () => {
     jsonData = await fs.readJson("./testdata.json");
   });
 
-  beforeEach(async () => {
-    // // Navigate to the website
-    // await browser.url("/");
-    // // Assertion on the URL
-    // await expect(browser).toHaveUrlContaining('https://www.salesforce.com/nl/');
-  });
-
   it("Creating an account", async () => {
 
     // Navigate to the website
