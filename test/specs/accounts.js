@@ -3,6 +3,7 @@ import LogIn from "../pageobjects/login.page.js";
 import Setup from "../pageobjects/setup.page.js";
 import Overview from "../pageobjects/overview.page.js";
 import Account from "../pageobjects/accounts.page.js";
+import DeleteAccount from "../deleteAccount.js"
 import { fill_In_Combo } from "../functions/functions.js";
 import fs from "fs-extra";
 
@@ -11,6 +12,18 @@ let jsonData = "";
 describe("Testing the accounts functionality", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
+
+    // Maximize the browser window
+    await browser.maximizeWindow();
+    // Navigate to the website
+    await browser.url("/");
+    // Assertion on the URL
+    await expect(browser).toHaveUrlContaining('login.salesforce');
+
+    await DeleteAccount.initialize()
+
+    await DeleteAccount.deleteAccount()
+
   });
 
   it("Creating an account", async () => {
@@ -18,13 +31,13 @@ describe("Testing the accounts functionality", () => {
     // Navigate to the website
     await browser.url("/");
     // Assertion on the URL
-    await expect(browser).toHaveUrlContaining('https://www.salesforce.com/nl/');
+    await expect(browser).toHaveUrlContaining('login.salesforce');
 
-    // Accept all cookies
-    await HomePage.click_AcceptCookies();
+    // // Accept all cookies
+    // await HomePage.click_AcceptCookies();
 
-    // Navigate to the login page of Salesforce trial
-    await HomePage.select_Login();
+    // // Navigate to the login page of Salesforce trial
+    // await HomePage.select_Login();
 
     // Actual login of Salseforce trial
     await LogIn.login_Salesforce(
@@ -42,9 +55,7 @@ describe("Testing the accounts functionality", () => {
     await Overview.click_AccountsButton();
 
     // Click the New button to create a new account
-    await Account.click_NewButton(
-      jsonData.accounts.input.account
-    );
+    await Account.click_NewButton();
 
     // Fill in the new account's details
     // Filling in details not inside of a (combobox) dropdown menu

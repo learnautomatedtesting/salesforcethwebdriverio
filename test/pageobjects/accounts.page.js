@@ -23,22 +23,30 @@ class Account {
     confirmDeleteAccountButton: () => $('[class="modal-footer slds-modal__footer"] [title="Delete"]')
   };
 
-  async click_NewButton(nameAccount) {
+
+  async deleteExistingAccount(nameAccount) {
     try {
       let account = await $(`a[title="${nameAccount}"]`);
-      let accountText = await account.getText();
-  
-      if(accountText === nameAccount) {
-        // Deleting the existing account and create a new one
-        await this.click_ActionsButton();
-        await this.click_DeleteAccountButton();
-      } else {
-        console.log('No such account exists already.');
-      }
-    } catch (error) {
-      // Handle the error if the element is not found or another error occurs
-      console.error(`An error occurred: ${error.message}`);
+      let accountText = await account.getText({timeout: 1000});
+
+      if(accountText === nameAccount)
+
+      await this.elements.actionsButton().waitForClickable();
+      await this.elements.actionsButton().click();
+    
+      await this.elements.deleteAccountButton().waitForClickable();
+      await this.elements.deleteAccountButton().click();
+
+      await this.elements.confirmDeleteAccountButton().waitForClickable();
+      await this.elements.confirmDeleteAccountButton().click();
+
+    console.log("Account deletion successful.");
+  } catch (error) {
+      console.error("No such account exists.", error);
     }
+  }
+
+  async click_NewButton() {
   
     await this.elements.newButton().click();
   }
@@ -118,23 +126,5 @@ class Account {
     await this.elements.saveButton().click()
   }
 
-  async click_ActionsButton() {
-    await this.elements.actionsButton().waitForClickable();
-    await this.elements.actionsButton().click();
-  }
-
-  async click_DeleteAccountButton() {
-    try {
-    await this.elements.deleteAccountButton().waitForClickable();
-    await this.elements.deleteAccountButton().click();
-
-    await this.elements.confirmDeleteAccountButton().waitForClickable();
-    await this.elements.confirmDeleteAccountButton().click();
-
-    console.log("Account deletion successful");
-  } catch (error) {
-      console.error("Error during account deletion: ", error);
-    }
-  }
 }
 export default new Account();

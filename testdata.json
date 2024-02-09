@@ -6,8 +6,8 @@
     },
     "output": {
       "quarterlyPerformance": "Quarterly Performance",
-      "inloggen": "Inloggen",
-      "loginError": "Controleer uw gebruikersnaam en wachtwoord. Als u nog steeds niet kunt inloggen, neemt u contact op met uw Salesforce-beheerder."
+      "inloggen": "Log In",
+      "loginError": "Please check your username and password. If you still can't log in, contact your Salesforce administrator."
   }
 },
 

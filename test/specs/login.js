@@ -1,4 +1,4 @@
-import HomePage from "../pageobjects/home.page.js";
+// import HomePage from "../pageobjects/home.page.js";
 import LogIn from "../pageobjects/login.page.js";
 import Setup from "../pageobjects/setup.page.js";
 import Overview from "../pageobjects/overview.page.js";
@@ -20,21 +20,21 @@ describe("Login Salesforce", () => {
     // Navigate to the website
     await browser.url("/");
     // Assertion on the URL
-    await expect(browser).toHaveUrlContaining('https://www.salesforce.com/nl/');
+    await expect(browser).toHaveUrlContaining('login.salesforce');
   });
   
   it("Logging in", async () => {
    
-     // Accept all cookies
-     await HomePage.click_AcceptCookies()
+    //  // Accept all cookies
+    //  await HomePage.click_AcceptCookies()
 
-     // Navigate to the login page of Salesforce trial
-     await HomePage.select_Login();
+    //  // Navigate to the login page of Salesforce trial
+    //  await HomePage.select_Login();
  
      // Actual login of Salseforce trial
      await LogIn.login_Salesforce(
-      process.env.USERNAMESF,
-      process.env.PASSWORD
+      process.env.SALESFORCE_USERNAME,
+      process.env.SALESFORCE_PASSWORD
      );
  
      // Click on the App Launcher
@@ -77,7 +77,7 @@ describe("Login Salesforce", () => {
     
     // Actual login of Salseforce trial
     await LogIn.login_Salesforce(
-      process.env.USERNAMESF,
+      process.env.SALESFORCE_USERNAME,
       jsonData.loggingIn.login.invalidPassword
      );
 
@@ -94,7 +94,7 @@ describe("Login Salesforce", () => {
     // Actual login of Salseforce trial
     await LogIn.login_Salesforce(
       jsonData.loggingIn.login.invalidEmail,
-      process.env.PASSWORD,
+      process.env.SALESFORCE_PASSWORD
      );
 
     const error = await $('[id="error"]')
