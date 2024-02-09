@@ -33,12 +33,6 @@ describe("Testing the accounts functionality", () => {
     // Assertion on the URL
     await expect(browser).toHaveUrlContaining('login.salesforce');
 
-    // // Accept all cookies
-    // await HomePage.click_AcceptCookies();
-
-    // // Navigate to the login page of Salesforce trial
-    // await HomePage.select_Login();
-
     // Actual login of Salseforce trial
     await LogIn.login_Salesforce(
       process.env.SALESFORCE_USERNAME,
@@ -178,15 +172,13 @@ describe("Testing the accounts functionality", () => {
   });
 
 
-  it.skip("Deleting an account", async () => {
+  it("Deleting an account", async () => {
 
     // Click on the Home button
     await Overview.click_HomeButton();
     
     // Click on the Actions button
     await Overview.click_AccountsButton();
-
-    await browser.pause(5000);
 
     // Click Actions button
     await Account.click_ActionsButton();

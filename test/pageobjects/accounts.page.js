@@ -27,7 +27,7 @@ class Account {
   async deleteExistingAccount(nameAccount) {
     try {
       let account = await $(`a[title="${nameAccount}"]`);
-      let accountText = await account.getText({timeout: 1000});
+      let accountText = await account.getText();
 
       if(accountText === nameAccount)
 
@@ -48,7 +48,23 @@ class Account {
 
   async click_NewButton() {
   
+    await this.elements.newButton().waitForClickable();
     await this.elements.newButton().click();
+  }
+
+  async click_ActionsButton() {
+  
+    await this.elements.actionsButton().waitForClickable();
+    await this.elements.actionsButton().click();
+  }
+
+  async click_DeleteAccountButton() {
+  
+    await this.elements.deleteAccountButton().waitForClickable();
+    await this.elements.deleteAccountButton().click();
+
+    await this.elements.confirmDeleteAccountButton().waitForClickable();
+    await this.elements.confirmDeleteAccountButton().click();
   }
   
 
