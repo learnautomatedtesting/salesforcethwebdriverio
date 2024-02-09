@@ -180,10 +180,12 @@ describe("Testing the accounts functionality", () => {
     // Click on the Actions button
     await Overview.click_AccountsButton();
 
-    // Click Actions button
-    await Account.click_ActionsButton();
+    // // Click Actions button
+    // await Account.click_ActionsButton();
 
-    // Delete the account
-    await Account.click_DeleteAccountButton();
+    // // Delete the account
+    // await Account.click_DeleteAccountButton();
+
+    await Account.deleteExistingAccount(jsonData.accounts.input.account);
   });
 });
