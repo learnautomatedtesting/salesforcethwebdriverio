@@ -30,7 +30,7 @@ Maak een project aan op je **Operation System** en installeer node.js en VSC vol
 - Dit zorgt ervoor dat het testscript overzichtelijk blijft en verschillende elementen gebruikt kunnen zonder het testscript te hoeven aanpassen
 
 **Specs**
-- In de [specfiles](https://github.com/Jeffrey-Jongkees/Salesforce/tree/testing/test/specs) staan de testscripts gedefinieerd
+- In de [specfiles](https://github.com/Jeffrey-Jongkees/Salesforce/tree/testing/test/specs) staan de testscripts gedefinieerd.
   
 
 **DRAAIEN VAN SCRIPTS**
