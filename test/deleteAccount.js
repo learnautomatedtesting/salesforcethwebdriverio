@@ -16,7 +16,7 @@ class DeleteAccount {
         this.jsonData = await fs.readJson("./testdata.json");
     }
 
-    async deleteAccount() {
+    async deleteAccounts() {
         // Actual login of Salseforce trial
         await LogIn.login_Salesforce(
         process.env.SALESFORCE_USERNAME,
@@ -33,8 +33,9 @@ class DeleteAccount {
       await Overview.click_AccountsButton();
 
       // Deleting the already existing account
-      await Account.deleteExistingAccount(
-      this.jsonData.accounts.input.account
+      await Account.deleteExistingAccounts(
+      this.jsonData.accounts.input.account1,
+      //this.jsonData.accounts.input.account2
     );
 
     }

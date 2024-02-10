@@ -22,7 +22,7 @@ describe("Testing the accounts functionality", () => {
 
     await DeleteAccount.initialize()
 
-    await DeleteAccount.deleteAccount()
+    await DeleteAccount.deleteAccounts()
 
   });
 
@@ -54,7 +54,7 @@ describe("Testing the accounts functionality", () => {
     // Fill in the new account's details
     // Filling in details not inside of a (combobox) dropdown menu
     await Account.fill_In_Accounts_Information(
-      jsonData.accounts.input.account,
+      jsonData.accounts.input.account1,
       jsonData.accounts.input.accountNumber,
       jsonData.accounts.input.accountSite,
       jsonData.accounts.input.annualRevenue,
@@ -186,6 +186,6 @@ describe("Testing the accounts functionality", () => {
     // // Delete the account
     // await Account.click_DeleteAccountButton();
 
-    await Account.deleteExistingAccount(jsonData.accounts.input.account);
+    await Account.deleteExistingAccounts(jsonData.accounts.input.account1);
   });
 });

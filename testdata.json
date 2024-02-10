@@ -13,7 +13,8 @@
 
   "accounts": {
     "input": {
-      "account": "Testing Consultancy",
+      "account1": "Testing Consultancy",
+      "account2": "Big Money Spenders",
       "accountNumber": "001",
       "accountSite": "Not applicable",
       "annualRevenue": "1000001",

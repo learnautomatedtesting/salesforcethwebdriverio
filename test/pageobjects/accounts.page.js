@@ -24,7 +24,7 @@ class Account {
   };
 
 
-  async deleteExistingAccount(nameAccount) {
+  async deleteExistingAccounts(nameAccount) {
     try {
       let account = await $(`a[title="${nameAccount}"]`);
       let accountText = await account.getText();
@@ -45,6 +45,34 @@ class Account {
       console.error("No such account exists.", error);
     }
   }
+
+  // async deleteExistingAccounts(...nameAccounts) {
+  //   for (let i = 0; i < nameAccounts.length; i++) {
+  //     const nameAccount = nameAccounts[i]
+  //     try {
+  //       let account = await $(`a[title="${nameAccount}"]`);
+  //       await account.waitForDisplayed();
+        
+  //       let accountText = await account.getText();
+  
+  //       if (accountText === nameAccount) {
+  //         await this.elements.actionsButton().waitForClickable();
+  //         await this.elements.actionsButton().click();
+      
+  //         await this.elements.deleteAccountButton().waitForClickable();
+  //         await this.elements.deleteAccountButton().click();
+  
+  //         await this.elements.confirmDeleteAccountButton().waitForClickable();
+  //         await this.elements.confirmDeleteAccountButton().click();
+  
+  //         console.log(`Account deletion successful for ${nameAccount}.`);
+  //       }
+  //     } catch (error) {
+  //       console.error(`Error deleting account ${nameAccount}:`, error);
+  //     }
+  //   }
+  // }
+  
 
   async click_NewButton() {
   
