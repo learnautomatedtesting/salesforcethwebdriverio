@@ -17,10 +17,10 @@ CRM: Customer Relationship Management
 
 Some core standard _objects_ in Salesforce and description
 
-_Accounts_ are the companies you’re doing business with
+**Leads** are potential prospects. You haven’t yet qualified that they're ready to buy or what product they need
 
-_Contacts_ are the people who work at an Account
+**Opportunities** are qualified leads that you’ve converted. When you convert the Lead, you create an Account and Contact along with the Opportunity.
 
-_Leads_ are potential prospects. You haven’t yet qualified that they're ready to buy or what product they need
+**Accounts** are the companies you’re doing business with
 
-_Opportunities_ are qualified leads that you’ve converted. When you convert the Lead, you create an Account and Contact along with the Opportunity.
+**Contacts** are the people who work at an Account

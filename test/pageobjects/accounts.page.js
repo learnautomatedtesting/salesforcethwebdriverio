@@ -46,7 +46,8 @@ class Account {
   //   }
   // }
 
-  async deleteExistingAccounts(...nameAccounts) {
+  async deleteExistingAccounts(...nameAccounts) { 
+
     for (const nameAccount of nameAccounts) {
       try {
         let account = await $(`a[title="${nameAccount}"]`);
@@ -62,10 +63,11 @@ class Account {
           await this.elements.confirmDeleteAccountButton().waitForClickable();
           await this.elements.confirmDeleteAccountButton().click();
 
-          await $('[class="forceVisualMessageQueue"]').waitForExist({ reverse: true });
+          const x_button = await $('>>>[title="Close"]')
+          await x_button.click();
   
           console.log(`Account deletion successful for ${nameAccount}.`);
-        }
+        } 
       } catch (error) {
         console.error(`Error deleting account ${nameAccount}:`, error);
       }

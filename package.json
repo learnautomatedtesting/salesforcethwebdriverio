@@ -9,11 +9,16 @@
     "@wdio/spec-reporter": "^8.32.2",
     "allure-commandline": "^2.27.0",
     "dotenv": "^16.4.4",
-    "fs-extra": "^11.2.0"
+    "edgedriver": "^5.3.10",
+    "fs-extra": "^11.2.0",
+    "wdio-edgedriver-service": "^3.0.3"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
     "account": "wdio run ./wdio.conf.js --spec accounts.js",
-    "login": "wdio run ./wdio.conf.js --spec login.js"
+    "githubActionsAccount": "wdio run ./wdio.conf.js --spec accounts.js",
+    "login": "wdio run ./wdio.conf.js --spec login.js",
+    "githubActionsLogin": "wdio run ./wdio.conf.js --spec login.js",
+    "smoke": "npx wdio --suite smoke"
   }
 }
