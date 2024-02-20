@@ -55,20 +55,23 @@ export const config = {
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
-    //
-    capabilities: [{
-        browserName: 'chrome',
-        // "goog:chromeOptions": 
-          // {
-          //   args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
-          // },
-    }, {
-        browserName: 'MicrosoftEdge',
-        // "ms:edgeOptions": 
-        //   {
-        //     args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
-        //   }
-    }],
+    //!!!!! ['--window-size=1920,1080', '--headless, --disable-gpu'] !!!!!
+    capabilities: [
+        {
+          browserName: "chrome",
+          "goog:chromeOptions": 
+          {
+            args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+          },
+        },
+        {
+          browserName: "MicrosoftEdge",
+          "ms:edgeOptions": 
+          {
+            args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
+          }
+        }
+      ],
 
     //
     // ===================
@@ -235,11 +238,11 @@ export const config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    beforeTest: async function (test, context) {
+    // beforeTest: async function (test, context) {
     
-      // Maximize the browser window
-     await browser.maximizeWindow();
-     },
+    //  // Maximize the browser window
+    // await browser.maximizeWindow();
+    // },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
