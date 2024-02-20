@@ -46,7 +46,7 @@ class Account {
   //   }
   // }
 
-  async deleteExistingAccounts(...nameAccounts) { 
+  async deleteExistingAccounts(...nameAccounts) { //naam
 
     for (const nameAccount of nameAccounts) {
       try {
