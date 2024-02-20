@@ -70,7 +70,7 @@ export const config = {
           {
             args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
           }
-        }
+        }//test
       ],
 
     //
