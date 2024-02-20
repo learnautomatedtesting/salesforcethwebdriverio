@@ -13,6 +13,18 @@ describe("Testing the accounts functionality", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
 
+    // Set window values for running headless
+    const width = 1920
+    const height = 1080
+    
+    await browser.setWindowSize(width, height)
+
+
+
+    // Maximize the browser window for running UI
+    // await browser.maximizeWindow();
+    
+    
     // Navigate to the website
     await browser.url("/");
     // Assertion on the URL
@@ -174,15 +186,11 @@ describe("Testing the accounts functionality", () => {
 
     // Click on the Home button
     await Overview.click_HomeButton();
+
+    await browser.pause(2000)
     
     // Click on the Actions button
     await Overview.click_AccountsButton();
-
-    // // Click Actions button
-    // await Account.click_ActionsButton();
-
-    // // Delete the account
-    // await Account.click_DeleteAccountButton();
 
     await Account.deleteExistingAccounts(jsonData.accounts.input.account1);
   });

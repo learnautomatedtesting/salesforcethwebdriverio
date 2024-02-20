@@ -57,13 +57,13 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //!!!!! ['--window-size=1920,1080', '--headless, --disable-gpu'] !!!!!
     capabilities: [
-        {
-          browserName: "chrome",
-          "goog:chromeOptions": 
-          {
-            args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
-          },
-        },
+        // {
+        //   browserName: "chrome",
+        //   "goog:chromeOptions": 
+        //   {
+        //     //args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+        //   },
+        // },
         {
           browserName: "MicrosoftEdge",
           "ms:edgeOptions": 
@@ -239,8 +239,8 @@ export const config = {
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
     // beforeTest: async function (test, context) {
-    
-    //  // Maximize the browser window
+          
+    // // Maximize the browser window
     // await browser.maximizeWindow();
     // },
     /**
@@ -294,7 +294,7 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-       after: function(test) {
+      after: function(test) {
       exec('allure serve allure-results', (error, stdout, stderr) => {
           if (error) {
               console.error(`Error: ${error.message}`);
