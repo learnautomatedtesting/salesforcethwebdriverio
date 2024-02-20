@@ -16,9 +16,9 @@
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
     "account": "wdio run ./wdio.conf.js --spec accounts.js",
-    "githubActionsAccount": "wdio run ./wdio.conf.js --spec accounts.js",
+    "githubActionsAccount": "SALESFORCE_USERNAME=$SALESFORCE_USERNAME SALESFORCE_PASSWORD=$SALESFORCE_PASSWORD wdio run ./wdio.conf.js --spec accounts.js",
     "login": "wdio run ./wdio.conf.js --spec login.js",
-    "githubActionsLogin": "wdio run ./wdio.conf.js --spec login.js",
+    "githubActionsLogin": "SALESFORCE_USERNAME=$SALESFORCE_USERNAME SALESFORCE_PASSWORD=$SALESFORCE_PASSWORD wdio run ./wdio.conf.js --spec login.js",
     "smoke": "npx wdio --suite smoke"
   }
 }
