@@ -57,13 +57,13 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //!!!!! ['--window-size=1920,1080', '--headless, --disable-gpu'] !!!!!
     capabilities: [
-        // {
-        //   browserName: "chrome",
-        //   "goog:chromeOptions": 
-        //   {
-        //     //args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
-        //   },
-        // },
+        {
+          browserName: "chrome",
+          "goog:chromeOptions": 
+          {
+            //args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+          },
+        },
         {
           browserName: "MicrosoftEdge",
           "ms:edgeOptions": 
