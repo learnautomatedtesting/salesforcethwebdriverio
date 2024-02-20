@@ -1,4 +1,4 @@
-import HomePage from "../pageobjects/home.page.js";
+//import HomePage from "../pageobjects/home.page.js";
 import LogIn from "../pageobjects/login.page.js";
 import Setup from "../pageobjects/setup.page.js";
 import Overview from "../pageobjects/overview.page.js";
@@ -14,10 +14,10 @@ describe("Testing the accounts functionality", () => {
     jsonData = await fs.readJson("./testdata.json");
 
     // Set window values for running headless
-    const width = 1920
-    const height = 1080
+    // const width = 1920
+    // const height = 1080
     
-    await browser.setWindowSize(width, height)
+    // await browser.setWindowSize(width, height)
 
 
 
