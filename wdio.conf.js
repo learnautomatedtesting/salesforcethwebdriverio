@@ -147,15 +147,15 @@ export const config = {
     //npx allure generate --clean allure-results
     //npx allure open
     reporters: ['spec',
-    // ['allure', {
-    //     //allure generate allure-results && allure open  -> generates and opens the allure report
-    //     //allure generate --clean allure-results && allure open  -> empties the report folder prior generating a new one
-    //     //npx allure open -> opens the report when automatically generating the report is enabled in the onComplete() hook
-    //     outputDir: './allure-results', 
-    //     disableWebdriverStepsReporting: false,
-    //     disableWebdriverScreenshotsReporting: false,
-    //     disableMochaHooks: true
-    // }],
+    ['allure', {
+        //allure generate allure-results && allure open  -> generates and opens the allure report
+        //allure generate --clean allure-results && allure open  -> empties the report folder prior generating a new one
+        //npx allure open -> opens the report when automatically generating the report is enabled in the onComplete() hook
+        outputDir: './allure-results', 
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+        disableMochaHooks: true
+    }],
 ],
 
     // Options to be passed to Mocha.
@@ -294,16 +294,16 @@ export const config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-     //   after: function(test) {
-  //     exec('allure serve allure-results', (error, stdout, stderr) => {
-  //         if (error) {
-  //             console.error(`Error: ${error.message}`);
-  //             return;
-  //         }
-  //         console.log(`stdout: ${stdout}`);
-  //         console.error(`stderr: ${stderr}`);
-  //     });
-  // },
+       after: function(test) {
+      exec('allure serve allure-results', (error, stdout, stderr) => {
+          if (error) {
+              console.error(`Error: ${error.message}`);
+              return;
+          }
+          console.log(`stdout: ${stdout}`);
+          console.error(`stderr: ${stderr}`);
+      });
+  },
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {object} config wdio configuration object
