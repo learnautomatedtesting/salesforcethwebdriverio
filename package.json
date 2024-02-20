@@ -9,9 +9,7 @@
     "@wdio/spec-reporter": "^8.32.2",
     "allure-commandline": "^2.27.0",
     "dotenv": "^16.4.4",
-    "edgedriver": "^5.3.10",
-    "fs-extra": "^11.2.0",
-    "wdio-edgedriver-service": "^3.0.3"
+    "fs-extra": "^11.2.0"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",

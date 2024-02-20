@@ -9,14 +9,17 @@ class Overview {
 
 
     async click_HomeButton() {
-        let test = await $('>>>[href="/lightning/page/home"]')         
+
+        let test = await $('>>>[href="/lightning/page/home"]');
+        await test.waitForClickable();          
         await browser.execute("arguments[0].click();",test)
     }
     
     async click_AccountsButton() {
 
+        let test = await $('>>>[title="Accounts"]');
 
-        let test = await $('>>>[title="Accounts"]')         
+        await test.waitForClickable();        
         await browser.execute("arguments[0].click();",test)
     }
 

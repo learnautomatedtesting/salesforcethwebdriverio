@@ -54,13 +54,22 @@ jobs:
       with:
         name: allure-report
         path: ./reporting
+
+    # This step deploys the Allure report to the gh-pages branch
+    # - name: Deploy to GitHub Pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./reporting/allure-report
+    #     publish_branch: gh-pages  # This is the branch the action will push to, set up for GitHub Pages
+    #     keep_files: true  # Optional: this keeps files that are not overwritten in the deployment
   
-    - name: Upload video
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: Salesforce-tests
-        path: ./reporting
+    # - name: Upload video
+    #   if: always()
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: Salesforce-tests
+    #     path: ./reporting
 
 #  Obtaining-Salesforce-results-video:
 #     runs-on: ubuntu-latest
