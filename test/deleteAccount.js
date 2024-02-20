@@ -35,7 +35,7 @@ class DeleteAccount {
       // Deleting the already existing account
       await Account.deleteExistingAccounts(
       this.jsonData.accounts.input.account1,
-    //   this.jsonData.accounts.input.account2
+      this.jsonData.accounts.input.account2
     );
 
     }

@@ -2,18 +2,23 @@
   "name": "my-new-project",
   "type": "module",
   "devDependencies": {
-    "@wdio/allure-reporter": "^8.27.0",
-    "@wdio/cli": "^8.27.1",
-    "@wdio/local-runner": "^8.27.0",
-    "@wdio/mocha-framework": "^8.27.0",
-    "@wdio/spec-reporter": "^8.27.0",
-    "allure-commandline": "^2.25.0",
-    "dotenv": "^16.3.1",
-    "fs-extra": "^11.2.0"
+    "@wdio/allure-reporter": "^8.32.2",
+    "@wdio/cli": "^8.32.2",
+    "@wdio/local-runner": "^8.32.2",
+    "@wdio/mocha-framework": "^8.32.2",
+    "@wdio/spec-reporter": "^8.32.2",
+    "allure-commandline": "^2.27.0",
+    "dotenv": "^16.4.4",
+    "edgedriver": "^5.3.10",
+    "fs-extra": "^11.2.0",
+    "wdio-edgedriver-service": "^3.0.3"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
     "account": "wdio run ./wdio.conf.js --spec accounts.js",
-    "login": "wdio run ./wdio.conf.js --spec login.js"
+    "githubActionsAccount": "wdio run ./wdio.conf.js --spec accounts.js",
+    "login": "wdio run ./wdio.conf.js --spec login.js",
+    "githubActionsLogin": "wdio run ./wdio.conf.js --spec login.js",
+    "smoke": "npx wdio --suite smoke"
   }
 }
