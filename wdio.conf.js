@@ -1,5 +1,5 @@
 import fs from 'fs-extra'
-// import { exec } from 'child_process';
+import { exec } from 'child_process';
 // import allure from 'allure-commandline'
 
 export const config = {
