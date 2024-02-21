@@ -13,7 +13,7 @@ describe("Testing the accounts functionality", () => {
     jsonData = await fs.readJson("./testdata.json");
 
     // Maximize the browser window for running UI
-    await browser.maximizeWindow();
+    // await browser.maximizeWindow();
     
     
     // Navigate to the website
