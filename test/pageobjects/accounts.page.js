@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { config } from 'dotenv';
 config();
 
@@ -24,70 +25,34 @@ class Account {
   };
 
 
-  async deleteExistingAccounts(...nameAccounts) {
+  async deleteExistingAccounts(...nameAccounts) { //naam
+
     for (const nameAccount of nameAccounts) {
-        try {
-            let accountSelector = `a[title="${nameAccount}"]`;
-            let isAccountPresent = await $(accountSelector).isExisting();
-
-            if (!isAccountPresent) {
-                console.log(`Account ${nameAccount} not found. Skipping deletion.`);
-                continue; // Skip to the next iteration if the account isn't present
-            }
-
-            let account = await $(accountSelector);
-            let accountText = await account.getText();
-
-            if (accountText === nameAccount) {
-                await this.elements.actionsButton().waitForClickable();
-                await this.elements.actionsButton().click();
-
-                await this.elements.deleteAccountButton().waitForClickable();
-                await this.elements.deleteAccountButton().click();
-
-                await this.elements.confirmDeleteAccountButton().waitForClickable();
-                await this.elements.confirmDeleteAccountButton().click();
-
-                const x_button = await $('>>>[title="Close"]');
-                await x_button.click();
-
-                console.log(`Account deletion successful for ${nameAccount}.`);
-            }
-        } catch (error) {
-            console.error(`Error deleting account ${nameAccount}:`, error);
-            // Consider adding additional handling here if needed, such as breaking out of the loop or performing cleanup
-        }
-    }
-}
-
-
-  // async deleteExistingAccounts(...nameAccounts) { //naam
-
-  //   for (const nameAccount of nameAccounts) {
-  //     try {
-  //       let account = await $(`a[title="${nameAccount}"]`);
-  //       let accountText = await account.getText();
+      try {
+        let account = await $(`a[title="${nameAccount}"]`);
+        let accountText = await account.getText();
   
-  //       if (accountText === nameAccount) {
-  //         await this.elements.actionsButton().waitForClickable();
-  //         await this.elements.actionsButton().click();
+        if (accountText === nameAccount) {
+          await this.elements.actionsButton().waitForClickable();
+          await this.elements.actionsButton().click();
       
-  //         await this.elements.deleteAccountButton().waitForClickable();
-  //         await this.elements.deleteAccountButton().click();
+          await this.elements.deleteAccountButton().waitForClickable();
+          await this.elements.deleteAccountButton().click();
   
-  //         await this.elements.confirmDeleteAccountButton().waitForClickable();
-  //         await this.elements.confirmDeleteAccountButton().click();
+          await this.elements.confirmDeleteAccountButton().waitForClickable();
+          await this.elements.confirmDeleteAccountButton().click();
 
-  //         const x_button = await $('>>>[title="Close"]')
-  //         await x_button.click();
+          const x_button = await $('>>>[title="Close"]')
+          await x_button.click();
   
-  //         console.log(`Account deletion successful for ${nameAccount}.`);
-  //       } 
-  //     } catch (error) {
-  //       console.error(`Error deleting account ${nameAccount}:`, error);
-  //     }
-  //   }
-  // }
+          console.log(chalk.green.bold(`Account deletion successful for ${nameAccount}.`));
+        } 
+      } catch (error) {
+        console.error(chalk.yellow.bold(`No such account with name: ${nameAccount}:`, error));
+      }
+    }
+  }
+
   
   
   
