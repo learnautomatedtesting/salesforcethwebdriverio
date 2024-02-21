@@ -1,6 +1,10 @@
 import fs from 'fs-extra'
 import { exec } from 'child_process';
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig();
 // import allure from 'allure-commandline'
+
+const browserName = process.env.BROWSER || 'chrome';
 
 export const config = {
     //
@@ -57,21 +61,23 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //!!!!! ['--window-size=1920,1080', '--headless, --disable-gpu'] !!!!!
     capabilities: [
-        {
-          browserName: "chrome",
-          "goog:chromeOptions": 
-          {
-            args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+      {
+        maxInstances: 1,
+        browserName: browserName,
+        ...(browserName === 'chrome' ? {
+          "goog:chromeOptions": {
+            //args: ['--window-size=1920,1080', '--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
           },
-        },
-        {
-          browserName: "MicrosoftEdge",
-          "ms:edgeOptions": 
-          {
-            args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
-          }
-        }
-      ],
+        } : {}),
+        ...(browserName === 'MicrosoftEdge' ? {
+          "ms:edgeOptions": {
+            //args: ['--window-size=1920,1080', '--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+          },
+        } : {}), 
+      }
+      // With the following (chained) commands the tests will be run subsequently in browsers, first Chrome and the Edge
+      // BROWSER=chrome npx wdio wdio.config.js && BROWSER=MicrosoftEdge npx wdio wdio.config.js
+    ],
 
     //
     // ===================
@@ -238,11 +244,11 @@ export const config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: async function (test, context) {
+    beforeTest: async function (test, context) {
           
-    // // Maximize the browser window
-    // await browser.maximizeWindow();
-    // },
+    // Maximize the browser window
+    await browser.maximizeWindow();
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)

@@ -13,16 +13,8 @@ describe("Testing the accounts functionality", () => {
   before(async () => {
     jsonData = await fs.readJson("./testdata.json");
 
-    // Set window values for running headless
-    // const width = 1920
-    // const height = 1080
-    
-    // await browser.setWindowSize(width, height)
-
-
-
     // Maximize the browser window for running UI
-    // await browser.maximizeWindow();
+    await browser.maximizeWindow();
     
     
     // Navigate to the website
