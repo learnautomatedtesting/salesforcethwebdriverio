@@ -24,55 +24,70 @@ class Account {
   };
 
 
-  // async deleteExistingAccounts(nameAccount) {
-  //   try {
-  //     let account = await $(`a[title="${nameAccount}"]`);
-  //     let accountText = await account.getText();
+  async deleteExistingAccounts(...nameAccounts) {
+    for (const nameAccount of nameAccounts) {
+        try {
+            let accountSelector = `a[title="${nameAccount}"]`;
+            let isAccountPresent = await $(accountSelector).isExisting();
 
-  //     if(accountText === nameAccount)
+            if (!isAccountPresent) {
+                console.log(`Account ${nameAccount} not found. Skipping deletion.`);
+                continue; // Skip to the next iteration if the account isn't present
+            }
 
-  //     await this.elements.actionsButton().waitForClickable();
-  //     await this.elements.actionsButton().click();
-    
-  //     await this.elements.deleteAccountButton().waitForClickable();
-  //     await this.elements.deleteAccountButton().click();
+            let account = await $(accountSelector);
+            let accountText = await account.getText();
 
-  //     await this.elements.confirmDeleteAccountButton().waitForClickable();
-  //     await this.elements.confirmDeleteAccountButton().click();
+            if (accountText === nameAccount) {
+                await this.elements.actionsButton().waitForClickable();
+                await this.elements.actionsButton().click();
 
-  //   console.log("Account deletion successful.");
-  // } catch (error) {
-  //     console.error("No such account exists.", error);
+                await this.elements.deleteAccountButton().waitForClickable();
+                await this.elements.deleteAccountButton().click();
+
+                await this.elements.confirmDeleteAccountButton().waitForClickable();
+                await this.elements.confirmDeleteAccountButton().click();
+
+                const x_button = await $('>>>[title="Close"]');
+                await x_button.click();
+
+                console.log(`Account deletion successful for ${nameAccount}.`);
+            }
+        } catch (error) {
+            console.error(`Error deleting account ${nameAccount}:`, error);
+            // Consider adding additional handling here if needed, such as breaking out of the loop or performing cleanup
+        }
+    }
+}
+
+
+  // async deleteExistingAccounts(...nameAccounts) { //naam
+
+  //   for (const nameAccount of nameAccounts) {
+  //     try {
+  //       let account = await $(`a[title="${nameAccount}"]`);
+  //       let accountText = await account.getText();
+  
+  //       if (accountText === nameAccount) {
+  //         await this.elements.actionsButton().waitForClickable();
+  //         await this.elements.actionsButton().click();
+      
+  //         await this.elements.deleteAccountButton().waitForClickable();
+  //         await this.elements.deleteAccountButton().click();
+  
+  //         await this.elements.confirmDeleteAccountButton().waitForClickable();
+  //         await this.elements.confirmDeleteAccountButton().click();
+
+  //         const x_button = await $('>>>[title="Close"]')
+  //         await x_button.click();
+  
+  //         console.log(`Account deletion successful for ${nameAccount}.`);
+  //       } 
+  //     } catch (error) {
+  //       console.error(`Error deleting account ${nameAccount}:`, error);
+  //     }
   //   }
   // }
-
-  async deleteExistingAccounts(...nameAccounts) { //naam
-
-    for (const nameAccount of nameAccounts) {
-      try {
-        let account = await $(`a[title="${nameAccount}"]`);
-        let accountText = await account.getText();
-  
-        if (accountText === nameAccount) {
-          await this.elements.actionsButton().waitForClickable();
-          await this.elements.actionsButton().click();
-      
-          await this.elements.deleteAccountButton().waitForClickable();
-          await this.elements.deleteAccountButton().click();
-  
-          await this.elements.confirmDeleteAccountButton().waitForClickable();
-          await this.elements.confirmDeleteAccountButton().click();
-
-          const x_button = await $('>>>[title="Close"]')
-          await x_button.click();
-  
-          console.log(`Account deletion successful for ${nameAccount}.`);
-        } 
-      } catch (error) {
-        console.error(`Error deleting account ${nameAccount}:`, error);
-      }
-    }
-  }
   
   
   
