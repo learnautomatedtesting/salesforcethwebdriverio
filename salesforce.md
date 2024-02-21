@@ -24,3 +24,22 @@ Some core standard _objects_ in Salesforce and description
 **Accounts** are the companies you’re doing business with
 
 **Contacts** are the people who work at an Account
+
+
+<!-- capabilities: [
+        {
+          browserName: "chrome",
+          "goog:chromeOptions": 
+          {
+            args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
+          },
+        },
+        {
+          browserName: "MicrosoftEdge",
+          "ms:edgeOptions": 
+          {
+            args: ['--window-size=1920,1080','--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
+          }
+        }
+        }//test
+      ], -->
