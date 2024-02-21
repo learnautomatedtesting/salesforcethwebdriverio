@@ -56,6 +56,7 @@ jobs:
   generate_allure_report:
     runs-on: ubuntu-latest
     needs: salesforce_tests
+    if: always()
 
     steps:
       - name: Checkout code
