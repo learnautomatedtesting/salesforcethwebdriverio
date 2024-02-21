@@ -1,4 +1,3 @@
-//import HomePage from "../pageobjects/home.page.js";
 import LogIn from "../pageobjects/login.page.js";
 import Setup from "../pageobjects/setup.page.js";
 import Overview from "../pageobjects/overview.page.js";

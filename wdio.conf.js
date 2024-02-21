@@ -246,7 +246,7 @@ export const config = {
      */
     // beforeTest: async function (test, context) {
           
-    // // Maximize the browser window
+    // //Maximize the browser window
     // await browser.maximizeWindow();
     // },
     /**
