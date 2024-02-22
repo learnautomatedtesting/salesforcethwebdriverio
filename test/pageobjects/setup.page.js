@@ -22,10 +22,15 @@ class Setup {
 
   async click_Service() {
 
+    if(!await this.elements.service().isDisplayed()) {
+      await this.elements.appLauncher().click();
+    }
+    else {
     await this.elements.service().waitForExist();
     await this.elements.service().waitForDisplayed();
     await this.elements.service().waitForClickable();
     await this.elements.service().click();
+    }
 }
 
 
