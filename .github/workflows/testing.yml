@@ -31,13 +31,7 @@ jobs:
           SALESFORCE_USERNAME: ${{ secrets.SALESFORCE_USERNAME }}
           SALESFORCE_PASSWORD: ${{ secrets.SALESFORCE_PASSWORD }}
         run: npm run githubActionsLogin
-
-      - name: Run Salesforce login test in Edge
-        env:
-          BROWSER: MicrosoftEdge
-          SALESFORCE_USERNAME: ${{ secrets.SALESFORCE_USERNAME }}
-          SALESFORCE_PASSWORD: ${{ secrets.SALESFORCE_PASSWORD }}
-        run: npm run githubActionsLogin
+        
 
       - name: Run Salesforce create account test in Chrome
         env:
@@ -46,12 +40,24 @@ jobs:
           SALESFORCE_PASSWORD: ${{ secrets.SALESFORCE_PASSWORD }}
         run: npm run githubActionsAccount
 
+     
+      - name: Run Salesforce login test in Edge
+        env:
+          BROWSER: MicrosoftEdge
+          SALESFORCE_USERNAME: ${{ secrets.SALESFORCE_USERNAME }}
+          SALESFORCE_PASSWORD: ${{ secrets.SALESFORCE_PASSWORD }}
+        run: npm run githubActionsLogin
+
+      
       - name: Run Salesforce create account test in Edge
         env:
           BROWSER: MicrosoftEdge
           SALESFORCE_USERNAME: ${{ secrets.SALESFORCE_USERNAME }}
           SALESFORCE_PASSWORD: ${{ secrets.SALESFORCE_PASSWORD }}
         run: npm run githubActionsAccount
+
+      - name: List Allure results
+        run: ls -la ./allure-results
 
   generate_allure_report:
     runs-on: ubuntu-latest
