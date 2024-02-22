@@ -40,6 +40,7 @@ class Setup {
       async click_Service() {
 
           await this.elements.service().waitForExist();
+          await this.elements.service().waitForDisplayed();
           await this.elements.service().moveTo();
           await this.elements.service().waitForClickable();
           await this.elements.service().click();
