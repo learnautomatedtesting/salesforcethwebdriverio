@@ -8,13 +8,26 @@ class Setup {
   async click_AppLauncher() {
 
     //let contentPanel = await $('[class="panel-content scrollable"]');
-
+    await browser.waitUntil(
+        async () => (await browser.execute(() => document.readyState)) === 'complete',
+        {
+            timeoutMsg: 'Page did not load completely within the specified time frame.'
+        }
+    );
     await this.elements.appLauncher().waitForExist();
     await this.elements.appLauncher().waitForDisplayed();
-    await this.elements.appLauncher().moveTo();
     await this.elements.appLauncher().waitForClickable();
     await this.elements.appLauncher().click();
   }
+
+  async click_Service() {
+
+    await this.elements.service().waitForExist();
+    await this.elements.service().waitForDisplayed();
+    await this.elements.service().waitForClickable();
+    await this.elements.service().click();
+}
+
 
 // async click_AppLauncher() {
 //     let contentPanel = await $('[class="panel-content scrollable"]');
@@ -37,15 +50,6 @@ class Setup {
 //         throw new Error("Content panel is not displayed after multiple attempts");
 //     }
 // }
-
-      async click_Service() {
-
-          await this.elements.service().waitForExist();
-          await this.elements.service().waitForDisplayed();
-          await this.elements.service().moveTo();
-          await this.elements.service().waitForClickable();
-          await this.elements.service().click();
-      }
 
 }
 
