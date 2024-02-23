@@ -150,8 +150,8 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
 
-    //http-server -p 8080
-    //http://localhost:8080
+    //http-server -p 8000
+    //http://localhost:8000
     // !!Ensure the port is available for serving the Allure report!!
     //python -m http.server
     //http://localhost:8000
