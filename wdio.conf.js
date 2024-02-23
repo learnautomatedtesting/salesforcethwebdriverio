@@ -152,6 +152,9 @@ export const config = {
 
     //http-server -p 8080
     //http://localhost:8080
+    // !!Ensure the port is available for serving the Allure report!!
+    //python -m http.server
+    //http://localhost:8000
     reporters: ['spec',
     ['allure', {
         //allure generate allure-results && allure open  -> generates and opens the allure report

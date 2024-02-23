@@ -77,13 +77,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: allure-results
-          path: allure-results
+          # path: allure-results
 
       - name: Generate Allure Report
         run: |
           npm install -g allure-commandline
-          pwd
-          ls -l
           allure generate allure-results -o allure-report --clean
 
       - name: Upload Allure Report
@@ -91,9 +89,6 @@ jobs:
         with:
           name: allure-report
           path: ./allure-report
-      
-      - name: Check Allure Version
-        run: allure --version
 
 
 
