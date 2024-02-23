@@ -81,6 +81,8 @@ jobs:
       - name: Generate Allure Report
         run: |
           npm install -g allure-commandline
+          pwd
+          ls -l
           allure generate allure-results -o allure-report --clean
 
       - name: Upload Allure Report
