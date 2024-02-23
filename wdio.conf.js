@@ -150,8 +150,8 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
 
-    //npx allure generate --clean allure-results
-    //npx allure open
+    //http-server -p 8080
+    //http://localhost:8080
     reporters: ['spec',
     ['allure', {
         //allure generate allure-results && allure open  -> generates and opens the allure report

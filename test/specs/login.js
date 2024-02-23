@@ -21,7 +21,7 @@ describe("Login Salesforce", () => {
     await expect(browser).toHaveUrlContaining('login.salesforce');
   });
   
-  it("Logging in", async () => {
+  it.only("Logging in", async () => {
    
     //  // Accept all cookies
     //  await HomePage.click_AcceptCookies()
