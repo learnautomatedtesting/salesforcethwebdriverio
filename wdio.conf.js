@@ -1,4 +1,4 @@
-import fs from 'fs-extra'
+// import fs from 'fs-extra'
 // import { exec } from 'child_process';
 import { config as dotenvConfig } from 'dotenv';
 dotenvConfig();
@@ -187,11 +187,11 @@ export const config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    onPrepare: function (config, capabilities) {
-      if(fs.existsSync("./allure-results")) {
-          fs.rmSync("./allure-results", {recursive: true} );
-      }
-    },
+    // onPrepare: function (config, capabilities) {
+    //   if(fs.existsSync("./allure-results")) {
+    //       fs.rmSync("./allure-results", {recursive: true} );
+    //   }
+    // },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
