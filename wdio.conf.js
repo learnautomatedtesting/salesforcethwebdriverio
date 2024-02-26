@@ -66,7 +66,7 @@ export const config = {
 
         ...(browserName === 'chrome' ? {
           "goog:chromeOptions": {
-            args: ['--headless', '--disable-gpu'],
+            args: ['--headless', '--disable-gpu'],//test1
           },
         } : {}),
         ...(browserName === 'MicrosoftEdge' ? {
