@@ -59,7 +59,7 @@ export const config = {
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
-    //!!!!! ['--window-size=1920,1080', '--headless, --disable-gpu'] !!!!!
+    //!!!!!! ['--window-size=1920,1080', '--headless, --disable-gpu'] !!!!!!
     capabilities: [
       {
         browserName: browserName,
