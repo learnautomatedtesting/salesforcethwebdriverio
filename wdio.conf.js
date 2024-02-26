@@ -66,12 +66,12 @@ export const config = {
 
         ...(browserName === 'chrome' ? {
           "goog:chromeOptions": {
-            args: ['--headless', '--disable-gpu'],//test1
+            args: ['--window-size=1920,1080', '--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
           },
         } : {}),
         ...(browserName === 'MicrosoftEdge' ? {
           "ms:edgeOptions": {
-           args: ['--headless', '--disable-gpu'],
+           args: ['--window-size=1920,1080', '--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'],
           },
         } : {}), 
       }
